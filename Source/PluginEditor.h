@@ -20,6 +20,17 @@ struct CustomRotarySlider : juce::Slider
     }
 };
 
+struct CustomLinearSlider : juce::Slider
+{
+    CustomLinearSlider() : juce::Slider(juce::Slider::SliderStyle::LinearVertical,
+                           juce::Slider::TextEntryBoxPosition::NoTextBox)
+    {
+
+    }
+};
+
+
+
 //==============================================================================
 /**
 */
@@ -45,9 +56,11 @@ private:
         highCutoffSlider,
         gainSlider,
         roomSizeSlider,
-        widthSlider,
-        drySlider,
+        widthSlider;
+
+    CustomLinearSlider drySlider,
         wetSlider;
+
 
     using APVTS = juce::AudioProcessorValueTreeState;
     using Attachment = APVTS::SliderAttachment;

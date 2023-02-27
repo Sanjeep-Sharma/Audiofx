@@ -55,13 +55,13 @@ void AudioFXAudioProcessorEditor::resized()
     // subcomponents in your editor..
 
     auto bounds = getLocalBounds();
-    auto responseArea = bounds.removeFromRight(bounds.getHeight() * 0.5);
-
+    auto VerticalSliderArea = bounds.removeFromRight(bounds.getWidth() * 0.25);
+    auto GainSliderArea = bounds.removeFromLeft(bounds.getWidth() * 0.25);
     auto lowCutArea = bounds.removeFromLeft(bounds.getWidth() * 0.33);
     auto highCutArea = bounds.removeFromRight(bounds.getWidth() * 0.5);
 
     lowCutoffSlider.setBounds(lowCutArea.removeFromTop(lowCutArea.getHeight() * 0.5));
-    gainSlider.setBounds(lowCutArea);
+    gainSlider.setBounds(GainSliderArea.removeFromTop(GainSliderArea.getHeight() * 1));
 
     highCutoffSlider.setBounds(highCutArea.removeFromTop(highCutArea.getHeight() * 0.5));
     roomSizeSlider.setBounds(highCutArea.removeFromTop(highCutArea.getHeight() * 0.5));
@@ -71,6 +71,10 @@ void AudioFXAudioProcessorEditor::resized()
     peakFreqSlider.setBounds(bounds.removeFromTop(bounds.getHeight() * 0.4));
     peakQualitySlider.setBounds(bounds.removeFromTop(bounds.getHeight() * 0.5));
     peakGainSlider.setBounds(bounds);
+
+    wetSlider.setBounds(VerticalSliderArea.removeFromRight(VerticalSliderArea.getWidth() * 0.5));
+    drySlider.setBounds(VerticalSliderArea);
+
 
 }
 
